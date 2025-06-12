@@ -1,17 +1,21 @@
-# Think Smarter, Not Harder: Uncertainty Calibration of Process Reward Models
+# Know What You Don’t Know: Uncertainty Calibration of Process Reward Models  
+
+## Paper
+- **arXiv:** <https://arxiv.org/abs/2506.09338>
+
+## Dataset
+- **Hugging Face:** <https://huggingface.co/datasets/young-j-park/prm_calibration>
 
 ---
 
 ## Environment
 
-- **Python** == 3.10  
-- Huggingface
-  - [vLLM](https://github.com/vllm-project/vllm)  
-  - [transformers](https://github.com/huggingface/transformers)  
-  - [datasets](https://github.com/huggingface/datasets)  
-  - [trl](https://github.com/lvwerra/trl)  
-  - [peft](https://github.com/huggingface/peft)  
-- Other common packages: `torch`, `numpy`, `tqdm`, `GPUtil`, etc.
+| Requirement   | Tested Version |
+|---------------|-------------------|
+| **Python**    | 3.10 |
+| **Common Packages**   | `torch`, `numpy`, `tqdm`, `GPUtil`, … |
+| **Hugging Face** | `transformers`, `datasets`, `trl`, `peft` |
+| **vLLM** | `vLLM` |
 
 ---
 
@@ -159,4 +163,17 @@ python main_infer_beamsearch_vllm.py \
     --dataset math500train \
     --chunk 0 --total_chunks 5 \
     --use_cuda_graph
+```
+
+---
+
+## Citation
+
+```
+@article{park2025calprm,
+  title   = {Know What You Don't Know: Uncertainty Calibration of Process Reward Models},
+  author  = {Park, Young-Jin and Greenewald, Kristjan and Alim, Kaveh and Wang, Hao and Azizan, Navid},
+  journal = {arXiv preprint arXiv:2506.09338},
+  year    = {2025}
+}
 ```
