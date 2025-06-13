@@ -14,7 +14,7 @@
 |---------------|-------------------|
 | **Python**    | 3.10 |
 | **Common Packages**   | `torch`, `numpy`, `tqdm`, `GPUtil`, … |
-| **Hugging Face** | `transformers`, `datasets`, `trl`, `peft` |
+| **Hugging Face** | `transformers<=4.51.3`, `datasets`, `trl`, `peft` |
 | **vLLM** | `vLLM` |
 
 ---
