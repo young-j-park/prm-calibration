@@ -4,7 +4,7 @@
 <div align="center">
 
 [![arXiv](https://img.shields.io/badge/arXiv-2506.09338-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2506.09338)
-[![🤗 HF Dataset](https://img.shields.io/badge/🤗_HF_Dataset-prm_calibration-yellow?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/datasets/young-j-park/prm_calibration)
+[![🤗 HF Dataset](https://img.shields.io/badge/Dataset-prm_calibration-yellow?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/datasets/young-j-park/prm_calibration)
 
 </div>
 
