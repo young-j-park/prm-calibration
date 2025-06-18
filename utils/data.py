@@ -1,5 +1,5 @@
 
-from datasets import load_dataset
+from datasets import load_dataset, concatenate_datasets
 
 
 def get_dataset(dataset_name: str, chunk: int, total_chunks: int):
@@ -17,7 +17,27 @@ def get_dataset(dataset_name: str, chunk: int, total_chunks: int):
         a_key (str): answer key in the dataset.
     """
     if dataset_name == "math500train":
-        dataset = load_dataset("hendrycks/competition_math", split="train")
+        try:
+            dataset = load_dataset("hendrycks/competition_math", split="train")
+        except Exception as e:
+            print("Primary dataset unavailable. Falling back to alternative source.")
+            print("See discussion: https://huggingface.co/datasets/hendrycks/competition_math/discussions/5")
+            print(f"Error: {e}")
+            subjects = [
+                "algebra",
+                "counting_and_probability",
+                "geometry",
+                "intermediate_algebra",
+                "number_theory",
+                "prealgebra",
+                "precalculus"
+            ]
+            datasets = [
+                load_dataset("EleutherAI/hendrycks_math", subject, split="train")
+                for subject in subjects
+            ]
+            dataset = concatenate_datasets(datasets)
+            
         assert len(dataset) == 7500
         dataset = dataset.select(list(range(0, len(dataset), 15)))
         q_key = "problem"
