@@ -43,7 +43,29 @@ def get_dataset(dataset_name: str, chunk: int, total_chunks: int):
         q_key = "problem"
         a_key = "solution"
     elif dataset_name == "math500":
-        dataset = load_dataset("HuggingFaceH4/MATH-500", split="test")
+        try:
+            dataset = load_dataset("hendrycks/competition_math", split="test")
+        except Exception as e:
+            print("Primary dataset unavailable. Falling back to alternative source.")
+            print("See discussion: https://huggingface.co/datasets/hendrycks/competition_math/discussions/5")
+            print(f"Error: {e}")
+            subjects = [
+                "algebra",
+                "counting_and_probability",
+                "geometry",
+                "intermediate_algebra",
+                "number_theory",
+                "prealgebra",
+                "precalculus"
+            ]
+            datasets = [
+                load_dataset("EleutherAI/hendrycks_math", subject, split="test")
+                for subject in subjects
+            ]
+            dataset = concatenate_datasets(datasets)
+            
+        assert len(dataset) == 5000
+        dataset = dataset.select(list(range(0, len(dataset), 10)))
         q_key = "problem"
         a_key = "solution"
     elif dataset_name == "aime2024":
