@@ -13,7 +13,7 @@
 </div>
 
 <div align="center">
-  <img src="https://young-j-park.github.io/know-what-you-dont-know/assets/images/motivation.png" alt="Instance-Adaptive Scaling" width="800"/>
+  <img src="https://young-j-park.github.io/know-what-you-dont-know/assets/images/motivation.png" alt="Instance-Adaptive Scaling" width="500"/>
   <p><em>Adaptive computation based on problem difficulty. Easy problems get quick decisions, hard problems get extended reasoning.</em></p>
 </div>
 
@@ -28,14 +28,14 @@ Process reward models (PRMs) guide inference-time scaling for LLMs, but even sta
 ### The Challenge: Overconfident PRMs
 
 <div align="center">
-  <img src="https://young-j-park.github.io/know-what-you-dont-know/assets/images/err_histogram_plot_uncalibrated_QwenPRM-7B_aimes.png" alt="PRM Calibration Error" width="600"/>
+  <img src="https://young-j-park.github.io/know-what-you-dont-know/assets/images/err_histogram_plot_uncalibrated_QwenPRM-7B_aimes.png" alt="PRM Calibration Error" width="350"/>
   <p><em>Uncalibrated PRMs systematically overestimate success probabilities, especially for weaker models and challenging problems.</em></p>
 </div>
 
 ### Our Solution: Calibrated Confidence + Smart Allocation
 
 <div align="center">
-  <img src="https://young-j-park.github.io/know-what-you-dont-know/assets/images/prm.jpg" alt="PRM Calibration Process" width="700"/>
+  <img src="https://young-j-park.github.io/know-what-you-dont-know/assets/images/prm.jpg" alt="PRM Calibration Process" width="500"/>
   <p><em>From overconfident to calibrated: Our quantile regression method transforms existing PRMs to provide reliable uncertainty estimates with confidence intervals.</em></p>
 </div>
 
