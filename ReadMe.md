@@ -280,7 +280,7 @@ python main_infer_beamsearch_vllm.py \
 ## Citation
 
 ```
-@article{park2025calprm,
+@article{park2025prmcalibration,
   title   = {Know What You Don't Know: Uncertainty Calibration of Process Reward Models},
   author  = {Park, Young-Jin and Greenewald, Kristjan and Alim, Kaveh and Wang, Hao and Azizan, Navid},
   journal = {arXiv preprint arXiv:2506.09338},
