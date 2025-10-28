@@ -12,6 +12,33 @@
 
 </div>
 
+<div align="center">
+  <img src="https://young-j-park.github.io/know-what-you-dont-know/assets/images/motivation.png" alt="Instance-Adaptive Scaling" width="800"/>
+  <p><em>Adaptive computation based on problem difficulty. Easy problems get quick decisions, hard problems get extended reasoning.</em></p>
+</div>
+
+## Overview
+
+Process reward models (PRMs) guide inference-time scaling for LLMs, but even state-of-the-art PRMs can be **poorly calibrated** and **overestimate success probabilities**. We present:
+
+- **📊 PRM Calibration via Quantile Regression**: Adjusts PRM outputs to align with true success probabilities
+- **🧠 Instance-Adaptive Scaling (IAS)**: Dynamically adjusts inference budget based on estimated success likelihood
+- **⚡ Up to 75% Computation Reduction**: While maintaining answer accuracy
+
+### The Challenge: Overconfident PRMs
+
+<div align="center">
+  <img src="https://young-j-park.github.io/know-what-you-dont-know/assets/images/err_histogram_plot_uncalibrated_QwenPRM-7B_aimes.png" alt="PRM Calibration Error" width="600"/>
+  <p><em>Uncalibrated PRMs systematically overestimate success probabilities, especially for weaker models and challenging problems.</em></p>
+</div>
+
+### Our Solution: Calibrated Confidence + Smart Allocation
+
+<div align="center">
+  <img src="https://young-j-park.github.io/know-what-you-dont-know/assets/images/prm.jpg" alt="PRM Calibration Process" width="700"/>
+  <p><em>From overconfident to calibrated: Our quantile regression method transforms existing PRMs to provide reliable uncertainty estimates with confidence intervals.</em></p>
+</div>
+
 ---
 
 ## Installation
