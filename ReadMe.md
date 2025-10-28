@@ -36,7 +36,7 @@ Process reward models (PRMs) guide inference-time scaling for LLMs, but even sta
 
 <div align="center">
   <img src="https://young-j-park.github.io/know-what-you-dont-know/assets/images/prm.jpg" alt="PRM Calibration Process" width="500"/>
-  <p><em>From overconfident to calibrated: Our quantile regression method transforms existing PRMs to provide reliable uncertainty estimates with confidence intervals.</em></p>
+  <p><em>Our quantile regression calibration transforms existing PRMs to provide reliable uncertainty estimates with confidence intervals.</em></p>
 </div>
 
 ---
