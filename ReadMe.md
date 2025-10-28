@@ -11,14 +11,29 @@
 
 ---
 
-## Environment
+## Installation
+
+Create and activate a conda environment:
+```bash
+conda create -n prm-calibration python=3.10
+conda activate prm-calibration
+```
+
+Install the required packages:
+```bash
+pip install torch==2.5.1
+pip install vllm==0.7.2 transformers==4.48.2 trl==0.15.2 peft==0.14.0 GPUtil==1.4.0 latex2sympy2==1.9.1 word2number==1.1
+```
+
+### Package Versions
 
 | Requirement   | Tested Version |
 |---------------|-------------------|
 | **Python**    | 3.10 |
-| **Common Packages**   | `torch`, `numpy`, `tqdm`, `GPUtil`, … |
-| **Hugging Face** | `transformers<=4.51.3`, `datasets`, `trl`, `peft` |
-| **vLLM** | `vLLM` |
+| **PyTorch**   | 2.5.1 |
+| **vLLM**      | 0.7.2 |
+| **Hugging Face** | `transformers==4.48.2`, `trl==0.15.2`, `peft==0.14.0` |
+| **Other Packages** | `GPUtil==1.4.0`, `latex2sympy2==1.9.1`, `word2number==1.1` |
 
 ---
 
