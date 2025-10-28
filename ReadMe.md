@@ -35,9 +35,71 @@ pip install vllm==0.7.2 transformers==4.48.2 trl==0.15.2 peft==0.14.0 GPUtil==1.
 | **Hugging Face** | `transformers==4.48.2`, `trl==0.15.2`, `peft==0.14.0` |
 | **Other Packages** | `GPUtil==1.4.0`, `latex2sympy2==1.9.1`, `word2number==1.1` |
 
+## Quick Start
+
+### Loading Calibration Dataset from HuggingFace
+```python
+from datasets import load_dataset
+
+dataset = "math500"
+policy_model_id_safe = "Llama-3.2-1B-Instruct"
+
+# Load calibration dataset
+ds = load_dataset(
+    "young-j-park/prm_calibration", 
+    data_files=f"{dataset}/{policy_model_id_safe}/data.json", 
+    split="train"
+)
+
+# Access sample data
+sample = ds[0]
+question = sample["question"]
+reasoning_prefix = sample["reasoning_prefix"]
+success_prob = sample["success_prob"]
+```
+
+### Loading and Using PRM Models
+
+#### Uncalibrated PRM
+```python
+from prm import load_prm
+
+# Load PRM model
+prm_model_id = "Qwen/Qwen2.5-Math-PRM-7B"
+prm = load_prm(prm_model_id)
+
+# Score a reasoning trajectory
+uncalibrated_scores = prm.score([question], [[reasoning_prefix]])
+prefix_reward = uncalibrated_scores[0][0][-1]  # last score
+print(f"Uncalibrated PRM Reward: {prefix_reward}")
+```
+
+#### Calibrated PRM with Quantile Regression
+```python
+from peft import PeftModel
+
+# Convert to quantile regression head
+prm.convert_to_quantile_regression_head(M=3)  # outputs [0.1, 0.5, 0.9] quantiles
+
+# Load calibrated weights
+prm_model_id_safe = prm_model_id.split("/")[-1]
+peft_model_id = f"young-j-park/{prm_model_id_safe}-calibrated-{policy_model_id_safe}"
+peft_model = PeftModel.from_pretrained(prm.model, peft_model_id)
+
+# Get calibrated quantile scores
+calibrated_scores = prm.score([question], [[reasoning_prefix]])
+prefix_reward_quantiles = calibrated_scores[0][0][-1]
+
+print(f"10% Quantile: {prefix_reward_quantiles[0]}")
+print(f"50% Quantile: {prefix_reward_quantiles[1]}")
+print(f"90% Quantile: {prefix_reward_quantiles[2]}")
+```
+
+For a complete interactive demo, see our [HuggingFace Demo notebook](https://github.com/young-j-park/prm-calibration/blob/main/HuggingFace%20Demo.ipynb).
+
 ---
 
-## Usage
+## Complete Usage
 
 Below are exemplary commands for running the scripts. 
 **Note**: To handle large datasets, you can process them in multiple chunks (e.g., `0, 1, 2, 3, 4`). 
